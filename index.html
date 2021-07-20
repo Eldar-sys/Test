@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="" id="app">
+        <div class="header">
+            <div class="container">
+                <div class="logo">To Do List</div>
+                <div class="form">
+                    <input type="text" v-bind:value="valueInput" v-on:input="handlyInput" v-on:keypress.enter="addTask" class="inp">
+                    <button class="btn" v-on:click="addTask">Add a new task</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-1">
+            <h2>
+                <span class="span-name">To Do</span>
+                <span class="mask-num">{{needDoList.lenght}}</span>
+            </h2>
+            <hr class="line">
+            <ul class="mask-list">
+                <li v-for="(mask,index) in needDoList" :key="mask.id" class="ul-li" >
+                    <div class="span-input">
+                        <input type="checkbox" v-on:change="doCheck(index, 'need')" class="chek">
+                        <span>{{mask.tittle}}</span>
+                    </div>
+                    <button class="btn-remove" v-on:click="removeMask(index, 'need')">Remove</button>
+                </li>
+            </ul>
+            <h2>
+                <span class="span-name">Done</span>
+                <span class="mask-num">{{completeList.lenght}}</span>
+            </h2>
+            <hr class="line">
+            <ul class="mask-list complete-list">
+                <li v-for="(mask, index) in completeList" :key="mask.id" class="ul-li">
+                    <div class="span-input">
+                        <input type="checkbox" v-on:change="doCheck(index, 'complete')" cheked class="chek">
+                        <span>{{mask.tittle}}</span>
+                    </div>
+                    <button class="btn-remove" v-on:click="removeMask(index, 'complete')">Remove</button>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
